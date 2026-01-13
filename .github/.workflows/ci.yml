@@ -1,0 +1,29 @@
+name: backend-ci
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      branches:
+        - main 
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INITDB_ROOT_USERNAME: admin
+          MONGO_INITDB_ROOT_PASSWORD: admin
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm test
+      - run: npm run build
