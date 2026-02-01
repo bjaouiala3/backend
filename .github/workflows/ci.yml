@@ -9,7 +9,7 @@ on:
       - main 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     services:
       mongo:
         image: mongo:latest

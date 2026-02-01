@@ -11,7 +11,7 @@ import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 
-@Controller('tasks')
+@Controller('api/tasks') // <--- add "api/" here
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
@@ -35,4 +35,5 @@ export class TasksController {
     return this.tasksService.remove(id);
   }
 }
+
 
